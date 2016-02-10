@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
         HandleAttacks();
 
         ResetFrame();
-	}
+	}    
 
     private void HandleMovement(float hInput) {
         // Only move if we are not attacking
