@@ -231,7 +231,7 @@ Transform:
   - {fileID: 403654913}
   - {fileID: 432798469}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!61 &105504340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1001 &177581412
 Prefab:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ Transform:
   m_LocalScale: {x: 4.1975775, y: 3.3550184, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &403654912
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,48 +866,33 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1001 &797658445
-Prefab:
+--- !u!1 &801714885
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 8.761543
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.4115753
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 421550, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 801714886}
+  m_Layer: 0
+  m_Name: KnifeSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &801714886
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 801714885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.77, y: 0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1833748447}
+  m_RootOrder: 3
 --- !u!1001 &839949454
 Prefab:
   m_ObjectHideFlags: 0
@@ -1372,7 +1357,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1464861771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1531,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1534907650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1674,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &1791212829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,8 +1813,9 @@ Transform:
   - {fileID: 1242543461}
   - {fileID: 2061780540}
   - {fileID: 1534907651}
+  - {fileID: 801714886}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!50 &1833748448
 Rigidbody2D:
   serializedVersion: 2
@@ -1869,6 +1855,7 @@ MonoBehaviour:
     m_Bits: 256
   jumpForce: 400
   knifePrefab: {fileID: 140774, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
+  knifeSpawn: {fileID: 801714886}
   airControl: 1
 --- !u!61 &1833748450
 BoxCollider2D:

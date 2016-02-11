@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
 
     [SerializeField]
     private GameObject knifePrefab;
+    [SerializeField]
+    private Transform knifeSpawn;
 
     private bool facingRight;
     [SerializeField]
@@ -103,7 +105,6 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Mouse1)) {
             mAnimator.SetTrigger("throw");
-            ThrowKnife(0);
         }
     }
 
@@ -146,13 +147,16 @@ public class Player : MonoBehaviour {
     }
 
     public void ThrowKnife(int value) {
-        if (facingRight) {
-            GameObject temp = (GameObject)Instantiate(knifePrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            temp.GetComponent<Knife>().Initialize(Vector2.right);
+        if (!OnGround && value == 1 || OnGround && value == 0) {
+            if (facingRight) {
+                GameObject temp = (GameObject)Instantiate(knifePrefab, knifeSpawn.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+                temp.GetComponent<Knife>().Initialize(Vector2.right);
+            }
+            else {
+                GameObject temp = (GameObject)Instantiate(knifePrefab, knifeSpawn.position, Quaternion.Euler(new Vector3(0, 0, +90)));
+                temp.GetComponent<Knife>().Initialize(Vector2.left);
+            }
         }
-        else {
-            GameObject temp = (GameObject)Instantiate(knifePrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, +90)));
-            temp.GetComponent<Knife>().Initialize(Vector2.left);
-        }
+
     }
 }
