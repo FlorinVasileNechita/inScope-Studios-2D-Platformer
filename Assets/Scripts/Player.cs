@@ -97,6 +97,10 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space)) {
             mAnimator.SetTrigger("jump");
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1)) {
+            mAnimator.SetTrigger("throw");
+        }
     }
 
     private void Flip(float hInput) {
