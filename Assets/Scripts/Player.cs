@@ -2,8 +2,17 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+    private static Player instance;
 
-    private Rigidbody2D mRigidBody;
+    public static Player Instance {
+        get {
+            if (instance == null) {
+                instance = GameObject.FindObjectOfType<Player>();
+            }
+            return instance; 
+        }
+    }
+
     private Animator mAnimator;
 
     [SerializeField]
@@ -19,16 +28,17 @@ public class Player : MonoBehaviour {
     private float jumpForce;
 
     private bool facingRight;
-    private bool attacking;
-    private bool sliding; 
-    private bool isGrounded;
-    private bool jump;
-    private bool jumpAttack;
     [SerializeField]
     private bool airControl;
 
+    public Rigidbody2D MyRigidbody { get; set; }
+    public bool Attack { get; set; }
+    public bool Slide { get; set; }
+    public bool Jump { get; set; }
+    public bool OnGround { get; set; }
+
 	void Start () {
-        mRigidBody = GetComponent<Rigidbody2D>();
+        MyRigidbody = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
 
         facingRight = true;
@@ -36,77 +46,56 @@ public class Player : MonoBehaviour {
 
     void Update() {
         HandleInput();
+
+        // Easeier pausing
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            Debug.Break();
+        }
     }
 
 	void FixedUpdate () {
         float hInput = Input.GetAxis("Horizontal");
-        
-        isGrounded = IsGrounded();
+
+        OnGround = IsGrounded();
 
         HandleMovement(hInput);
         Flip(hInput);
-        HandleAttacks();
 
         HandleLayers();
-
-        ResetFrame();
 	}    
 
     private void HandleMovement(float hInput) {
-
-        if (mRigidBody.velocity.y < 0) {
+        // If we aren't moving up or down, we're on the ground.
+        // (Not actually true but lolololYouTubeTutorials
+        if (MyRigidbody.velocity.y < 0) {
             mAnimator.SetBool("land", true);
         }
 
-        // Only move if we are not attacking
-        if (!mAnimator.GetBool("slide") && !mAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && (isGrounded || airControl)) {
-            mRigidBody.velocity = new Vector2(hInput * movementSpeed, mRigidBody.velocity.y);
-            
+        // If we aren't attacking, or sliding, and are either on the ground or in the air, we move.
+        if (!Attack && !Slide && (OnGround || airControl)) {
+            MyRigidbody.velocity = new Vector2(hInput * movementSpeed, MyRigidbody.velocity.y);
         }
 
-        if (isGrounded && jump) {
-            isGrounded = false;
-            mRigidBody.AddForce(new Vector2(0, jumpForce));
-            mAnimator.SetTrigger("jump");
-        }
-
-        if (sliding && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("AnimSlide")) {
-            mAnimator.SetBool("slide", true);
-        }
-        else if (!mAnimator.GetCurrentAnimatorStateInfo(0).IsName("AnimSlide")) {
-            mAnimator.SetBool("slide", false);
+        // If we want to jump and we aren't currently falling, add jump force
+        if (Jump && MyRigidbody.velocity.y == 0) {
+            MyRigidbody.AddForce(new Vector2(0, jumpForce));
         }
 
         mAnimator.SetFloat("speed", Mathf.Abs(hInput));
+
     }
 
     // Checks inputs
     private void HandleInput() {
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            attacking = true;
-            jumpAttack = true;
+            mAnimator.SetTrigger("attack");
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            sliding = true;
+            mAnimator.SetTrigger("slide");
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            jump = true;
-        }
-    }
-
-    // Enables attack animation
-    private void HandleAttacks() {
-        if (attacking && isGrounded && !mAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack")) {
-            mAnimator.SetTrigger("attack");
-            mRigidBody.velocity = Vector2.zero;
-        }
-
-        if (jumpAttack && !isGrounded && !mAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack")) {
-            mAnimator.SetBool("jumpAttack", true);
-        }
-        if (!jumpAttack && !mAnimator.GetCurrentAnimatorStateInfo(1).IsName("JumpAttack")) {
-            mAnimator.SetBool("jumpAttack", false);
+            mAnimator.SetTrigger("jump");
         }
     }
 
@@ -123,22 +112,13 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void ResetFrame() {
-        attacking = false;
-        sliding = false;
-        jump = false;
-        jumpAttack = false;
-    }
-
     private bool IsGrounded() {
-        if (mRigidBody.velocity.y <= 0) {
+        if (MyRigidbody.velocity.y <= 0) {
             foreach (Transform point in groundPoints) {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
 
                 for (int i = 0; i < colliders.Length; i++) {
                     if (colliders[i].gameObject != gameObject) {
-                        mAnimator.ResetTrigger("jump");
-                        mAnimator.SetBool("land", false);
                         return true;
                     }
                 }
@@ -148,7 +128,7 @@ public class Player : MonoBehaviour {
     }
 
     private void HandleLayers() {
-        if (!isGrounded) {
+        if (!OnGround) {
             mAnimator.SetLayerWeight(1, 1);
         }
 
