@@ -9,6 +9,11 @@ public class PatrolState : IEnemyState {
 
     public void Execute() {
         Patrol();
+        enemy.Move();
+
+        if (enemy.Target != null) {
+            enemy.ChangeState(new RangedState());
+        }
     }
 
     public void Enter(Enemy enemy) {
@@ -20,7 +25,9 @@ public class PatrolState : IEnemyState {
     }
 
     public void OnTriggerEnter(Collider2D other) {
-
+        if (other.tag == "Edge") {
+            enemy.ChangeDirection();
+        }
     }
 
     public void Patrol() {
@@ -29,7 +36,5 @@ public class PatrolState : IEnemyState {
         if (patrolTimer > patrolDuration) {
             enemy.ChangeState(new IdleState());
         }
-
-        enemy.Move();
     }
 }

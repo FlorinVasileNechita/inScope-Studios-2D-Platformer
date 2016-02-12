@@ -9,6 +9,10 @@ public class IdleState : IEnemyState {
 
     public void Execute() {
         Idle();
+
+        if (enemy.Target != null) {
+            enemy.ChangeState(new PatrolState());
+        }
     }
 
     public void Enter(Enemy enemy) {
