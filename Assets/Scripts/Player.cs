@@ -34,7 +34,6 @@ public class Player : Character {
 	public override void Start () {
         base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
-        Debug.Log(mAnimator);
         
 	}
 

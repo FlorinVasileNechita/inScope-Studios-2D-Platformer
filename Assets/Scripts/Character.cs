@@ -3,8 +3,6 @@ using System.Collections;
 
 public abstract class Character : MonoBehaviour {
 
-    protected Animator mAnimator;
-
     [SerializeField]
     protected float movementSpeed;
    
@@ -15,6 +13,7 @@ public abstract class Character : MonoBehaviour {
 
     protected bool facingRight;
 
+    public Animator mAnimator { get; private set; }
     public bool Attack { get; set; }
    
 	// Use this for initialization
