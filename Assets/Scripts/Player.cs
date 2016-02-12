@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Player : Character {
     private static Player instance;
 
     public static Player Instance {
@@ -12,11 +12,7 @@ public class Player : MonoBehaviour {
             return instance; 
         }
     }
-
-    private Animator mAnimator;
-
-    [SerializeField]
-    private float movementSpeed;
+    
     [SerializeField]
     private Transform[] groundPoints;
     [SerializeField]
@@ -28,25 +24,18 @@ public class Player : MonoBehaviour {
     private float jumpForce;
 
     [SerializeField]
-    private GameObject knifePrefab;
-    [SerializeField]
-    private Transform knifeSpawn;
-
-    private bool facingRight;
-    [SerializeField]
     private bool airControl;
 
     public Rigidbody2D MyRigidbody { get; set; }
-    public bool Attack { get; set; }
     public bool Slide { get; set; }
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
-	void Start () {
+	public override void Start () {
+        base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
-        mAnimator = GetComponent<Animator>();
-
-        facingRight = true;
+        Debug.Log(mAnimator);
+        
 	}
 
     void Update() {
@@ -111,12 +100,7 @@ public class Player : MonoBehaviour {
     private void Flip(float hInput) {
         if (!mAnimator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && !mAnimator.GetCurrentAnimatorStateInfo(0).IsName("AnimSlide")) {
             if (hInput > 0 && !facingRight || hInput < 0 && facingRight) {
-                facingRight = !facingRight;
-
-                // Invert X scale to flip
-                Vector3 mScale = transform.localScale;
-                mScale.x *= -1;
-                transform.localScale = mScale;
+                ChangeDirection();
             }
         }
     }
@@ -146,16 +130,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void ThrowKnife(int value) {
+    public override void ThrowKnife(int value) {
         if (!OnGround && value == 1 || OnGround && value == 0) {
-            if (facingRight) {
-                GameObject temp = (GameObject)Instantiate(knifePrefab, knifeSpawn.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-                temp.GetComponent<Knife>().Initialize(Vector2.right);
-            }
-            else {
-                GameObject temp = (GameObject)Instantiate(knifePrefab, knifeSpawn.position, Quaternion.Euler(new Vector3(0, 0, +90)));
-                temp.GetComponent<Knife>().Initialize(Vector2.left);
-            }
+            base.ThrowKnife(value);
         }
 
     }
