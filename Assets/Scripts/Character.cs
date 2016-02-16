@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Character : MonoBehaviour {
 
@@ -10,6 +11,11 @@ public abstract class Character : MonoBehaviour {
     protected GameObject knifePrefab;
     [SerializeField]
     protected Transform knifeSpawn;
+
+    [SerializeField]
+    private EdgeCollider2D swordCollider;
+    [SerializeField]
+    private List<string> damageSources;
 
     protected bool facingRight;
 
@@ -24,7 +30,7 @@ public abstract class Character : MonoBehaviour {
 	// Use this for initialization
 	public virtual void Start () {
         mAnimator = GetComponent<Animator>();
-
+        
         facingRight = true;
 	}
 
@@ -46,8 +52,12 @@ public abstract class Character : MonoBehaviour {
         }
     }
 
+    public void MeleeAttack() {
+        swordCollider.enabled = !swordCollider.enabled;
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Knife") {
+        if (damageSources.Contains(other.tag)) {
             StartCoroutine(TakeDamage());
         }
     }
