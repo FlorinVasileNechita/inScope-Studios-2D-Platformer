@@ -695,7 +695,7 @@ GameObject:
   - 4: {fileID: 450734564}
   - 61: {fileID: 450734566}
   - 114: {fileID: 450734565}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 450734563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: 0.71, z: 0}
+  m_LocalPosition: {x: 7.59, y: 0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2120042050}
@@ -739,7 +739,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 12.05, y: 1}
+  m_Size: {x: 18.55, y: 1}
 --- !u!1 &481491228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1203,33 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1070864468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1070864469}
+  m_Layer: 0
+  m_Name: KnifeSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070864469
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070864468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.39, y: -0.32999992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2120042050}
+  m_RootOrder: 1
 --- !u!1 &1073374276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,7 +2014,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833748444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.46, y: 11.93, z: 0}
+  m_LocalPosition: {x: 3.42, y: 11.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1242543461}
@@ -2270,10 +2297,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120042047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5651114, y: 12.26, z: 0}
+  m_LocalPosition: {x: -10.73, y: 12.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450734564}
+  - {fileID: 1070864469}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!61 &2120042051
@@ -2319,8 +2347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  knifePrefab: {fileID: 0}
-  knifeSpawn: {fileID: 0}
+  knifePrefab: {fileID: 140774, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
+  knifeSpawn: {fileID: 1070864469}
+  meleeRange: 2
+  throwRange: 12
 --- !u!114 &2120042054
 MonoBehaviour:
   m_ObjectHideFlags: 0

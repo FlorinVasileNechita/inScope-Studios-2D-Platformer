@@ -6,6 +6,31 @@ public class Enemy : Character {
     private IEnemyState currentState;
     public GameObject Target { get; set; }
 
+    [SerializeField]
+    private float meleeRange;
+    [SerializeField]
+    private float throwRange;
+
+    public bool InMeleeRange {
+        get {
+            if (Target != null) {
+                return Vector2.Distance(transform.position, Target.transform.position) <= meleeRange;
+            }
+
+            return false;
+        }
+    }
+
+    public bool InThrowRange {
+        get {
+            if (Target != null) {
+                return Vector2.Distance(transform.position, Target.transform.position) <= throwRange;
+            }
+
+            return false;
+        }
+    }
+
 	// Use this for initialization
 	public override void Start () {
         base.Start();
@@ -29,9 +54,11 @@ public class Enemy : Character {
     }
 
     public void Move() {
-        mAnimator.SetFloat("speed", 1);
+        if (!Attack) {
+            mAnimator.SetFloat("speed", 1);
+            transform.Translate(GetDirection() * movementSpeed * Time.deltaTime);
+        }
 
-        transform.Translate(GetDirection() * movementSpeed * Time.deltaTime);
     }
 
     private void LookAtTarget() {

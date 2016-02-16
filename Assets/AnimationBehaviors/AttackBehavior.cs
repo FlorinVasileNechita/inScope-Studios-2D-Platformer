@@ -5,10 +5,13 @@ public class AttackBehavior : StateMachineBehaviour {
 
 	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Player.Instance.Attack = true;
+        animator.GetComponent<Character>().Attack = true;
+        animator.SetFloat("speed", 0);
 
-        if (Player.Instance.OnGround) {
-            Player.Instance.MyRigidbody.velocity = Vector2.zero;
+        if (animator.tag == "Player") {
+            if (Player.Instance.OnGround) {
+                Player.Instance.MyRigidbody.velocity = Vector2.zero;
+            }
         }
 	}
 
@@ -19,7 +22,7 @@ public class AttackBehavior : StateMachineBehaviour {
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Player.Instance.Attack = false;
+        animator.GetComponent<Character>().Attack = false;
         animator.ResetTrigger("attack");
         animator.ResetTrigger("throw");
     }
