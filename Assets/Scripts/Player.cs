@@ -135,4 +135,14 @@ public class Player : Character {
         }
 
     }
+
+    public override IEnumerator TakeDamage() {
+        yield return null;
+    }
+
+    public override bool IsDead {
+        get {
+            return health <= 0;
+        }
+    }
 }

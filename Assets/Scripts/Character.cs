@@ -15,6 +15,11 @@ public abstract class Character : MonoBehaviour {
 
     public Animator mAnimator { get; private set; }
     public bool Attack { get; set; }
+
+    [SerializeField]
+    protected int health;
+    public abstract bool IsDead { get; }
+    public bool TakingDamage { get; set; }
    
 	// Use this for initialization
 	public virtual void Start () {
@@ -22,6 +27,8 @@ public abstract class Character : MonoBehaviour {
 
         facingRight = true;
 	}
+
+    public abstract IEnumerator TakeDamage();
 
     public void ChangeDirection() {
         facingRight = !facingRight;
@@ -36,6 +43,12 @@ public abstract class Character : MonoBehaviour {
         else {
             GameObject temp = (GameObject)Instantiate(knifePrefab, knifeSpawn.position, Quaternion.Euler(new Vector3(0, 0, +90)));
             temp.GetComponent<Knife>().Initialize(Vector2.left);
+        }
+    }
+
+    public virtual void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Knife") {
+            StartCoroutine(TakeDamage());
         }
     }
 }

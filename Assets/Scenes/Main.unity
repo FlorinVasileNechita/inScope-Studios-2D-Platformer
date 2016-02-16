@@ -2054,6 +2054,7 @@ MonoBehaviour:
   movementSpeed: 10
   knifePrefab: {fileID: 140774, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
   knifeSpawn: {fileID: 801714886}
+  health: 0
   groundPoints:
   - {fileID: 1242543461}
   - {fileID: 2061780540}
@@ -2347,8 +2348,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  knifePrefab: {fileID: 140774, guid: dab795bbcc3405c49b9a997a792e8b84, type: 2}
+  knifePrefab: {fileID: 140774, guid: 1f091dd06960a3c439997ff49694460f, type: 2}
   knifeSpawn: {fileID: 1070864469}
+  health: 20
   meleeRange: 2
   throwRange: 12
 --- !u!114 &2120042054

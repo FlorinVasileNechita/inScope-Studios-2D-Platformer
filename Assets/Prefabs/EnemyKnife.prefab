@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21266352}
   - 50: {fileID: 5039106}
   - 114: {fileID: 11482262}
-  - 61: {fileID: 6138294}
+  - 61: {fileID: 6140344}
   m_Layer: 0
-  m_Name: Knife
-  m_TagString: Knife
+  m_Name: EnemyKnife
+  m_TagString: EnemyKnife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6138294
+--- !u!61 &6140344
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -113,7 +113,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Knife
+      value: EnemyKnife
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
