@@ -38,7 +38,9 @@ public class Player : Character {
 	}
 
     void Update() {
-        HandleInput();
+        if (!TakingDamage && !IsDead) {
+            HandleInput();
+        }
 
         // Easeier pausing
         if (Input.GetKeyDown(KeyCode.Q)) {
@@ -47,14 +49,16 @@ public class Player : Character {
     }
 
 	void FixedUpdate () {
-        float hInput = Input.GetAxis("Horizontal");
+        if (!TakingDamage && !IsDead) {
+            float hInput = Input.GetAxis("Horizontal");
 
-        OnGround = IsGrounded();
+            OnGround = IsGrounded();
 
-        HandleMovement(hInput);
-        Flip(hInput);
+            HandleMovement(hInput);
+            Flip(hInput);
 
-        HandleLayers();
+            HandleLayers();
+        }
 	}    
 
     private void HandleMovement(float hInput) {
@@ -137,6 +141,15 @@ public class Player : Character {
     }
 
     public override IEnumerator TakeDamage() {
+        health -= 10;
+
+        if (!IsDead) {
+            mAnimator.SetTrigger("damage");
+        }
+        else {
+            mAnimator.SetLayerWeight(1, 0);
+            mAnimator.SetTrigger("death");
+        }
         yield return null;
     }
 

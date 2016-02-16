@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &358496129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.8101144, y: 1.819334}
+  - {x: -0.8196473, y: 1.819334}
   - {x: -0.19023275, y: 1.8162746}
   - {x: 0.5001025, y: 1.5441284}
   - {x: 1.1797161, y: 0.8104305}
@@ -1068,7 +1068,7 @@ EdgeCollider2D:
   - {x: -0.03849888, y: -2.0919476}
   - {x: -0.42040062, y: -2.1125183}
   - {x: -0.82162905, y: -2.0957432}
-  - {x: -0.8024769, y: 1.8400059}
+  - {x: -0.81200933, y: 1.811409}
 --- !u!4 &643008946
 Transform:
   m_ObjectHideFlags: 0
@@ -2070,7 +2070,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6bec9322c47cecd4dbfba6c173839161, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18a8b7f032930f14eb680e220a37d2dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2081,7 +2081,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833748444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.42, y: 12, z: 0}
+  m_LocalPosition: {x: -11.221, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1242543461}
@@ -2267,6 +2267,60 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2058870402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2058870403}
+  - 68: {fileID: 2058870404}
+  m_Layer: 0
+  m_Name: SwordCollider
+  m_TagString: EnemySword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058870403
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058870402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.315, y: -0.26000023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2120042050}
+  m_RootOrder: 2
+--- !u!68 &2058870404
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058870402}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -0.8101144, y: 1.819334}
+  - {x: -0.19023275, y: 1.8162746}
+  - {x: 0.5001025, y: 1.5441284}
+  - {x: 1.1797161, y: 0.8104305}
+  - {x: 1.4226623, y: -0.00812912}
+  - {x: 1.3477411, y: -0.7078266}
+  - {x: 1.0151935, y: -1.304636}
+  - {x: 0.749773, y: -1.637619}
+  - {x: 0.29540014, y: -1.9394455}
+  - {x: -0.03849888, y: -2.0919476}
+  - {x: -0.42040062, y: -2.1125183}
+  - {x: -0.82162905, y: -2.0957432}
+  - {x: -0.8024769, y: 1.8400059}
 --- !u!1 &2061780539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2413,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22f76d1b765029345871dc15ba982805, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dff462884b75b73468a8cb36c6dce4bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2370,11 +2424,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2120042047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.73, y: 12.26, z: 0}
+  m_LocalPosition: {x: -6.841, y: 12.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450734564}
   - {fileID: 1070864469}
+  - {fileID: 2058870403}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!61 &2120042051
@@ -2422,7 +2477,7 @@ MonoBehaviour:
   movementSpeed: 4
   knifePrefab: {fileID: 140774, guid: 1f091dd06960a3c439997ff49694460f, type: 2}
   knifeSpawn: {fileID: 1070864469}
-  swordCollider: {fileID: 0}
+  swordCollider: {fileID: 2058870404}
   damageSources:
   - Knife
   - Sword

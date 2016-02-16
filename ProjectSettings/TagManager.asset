@@ -8,6 +8,7 @@ TagManager:
   - EnemyKnife
   - Knife
   - Sword
+  - EnemySword
   layers:
   - Default
   - TransparentFX

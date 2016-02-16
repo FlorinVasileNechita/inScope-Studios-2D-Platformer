@@ -109,6 +109,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfbff19c8a6fed4bb3e26328c2d45a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11436600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c66e3157af0ead44bcbb84999db1430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11441070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,7 +610,7 @@ AnimatorStateTransition:
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110169146
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1195,11 +1206,12 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: AnimDamage
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110136356}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11436600}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

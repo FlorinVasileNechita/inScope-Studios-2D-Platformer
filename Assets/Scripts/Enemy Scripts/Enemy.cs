@@ -90,8 +90,8 @@ public class Enemy : Character {
         }
         else {
             mAnimator.SetTrigger("death");
-            yield return null;
         }
+        yield return null;
     }
 
     public override bool IsDead {
