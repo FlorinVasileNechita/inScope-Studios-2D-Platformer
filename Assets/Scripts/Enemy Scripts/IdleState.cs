@@ -5,7 +5,7 @@ public class IdleState : IEnemyState {
     private Enemy enemy;
 
     private float idleTimer;
-    private float idleDuration = 5;
+    private float idleDuration;
 
     public void Execute() {
         Idle();
@@ -16,6 +16,7 @@ public class IdleState : IEnemyState {
     }
 
     public void Enter(Enemy enemy) {
+        idleDuration = UnityEngine.Random.Range(1, 10);
         this.enemy = enemy;
     }
 
