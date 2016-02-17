@@ -35,6 +35,9 @@ public class Player : Character {
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
+    [SerializeField]
+    private Vector3 startPos;
+
     private bool immortal = false;
     [SerializeField]
     private float immortalDuration;
@@ -48,6 +51,9 @@ public class Player : Character {
 
     void Update() {
         if (!TakingDamage && !IsDead) {
+            if (transform.position.y <= -14f) {
+                Death();
+            }
             HandleInput();
         }
 
@@ -191,5 +197,12 @@ public class Player : Character {
             }
             return health <= 0;
         }
+    }
+
+    public override void Death() {
+        MyRigidbody.velocity = Vector2.zero;
+        mAnimator.SetTrigger("idle");
+        health = 30;
+        transform.position = startPos;
     }
 }

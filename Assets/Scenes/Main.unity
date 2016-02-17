@@ -1036,6 +1036,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 643008946}
   - 68: {fileID: 643008945}
+  - 114: {fileID: 643008947}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: Sword
@@ -1081,6 +1082,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833748447}
   m_RootOrder: 4
+--- !u!114 &643008947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 643008944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad10e54af054c4c8cb9a59e9ed38e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
 --- !u!1 &801714885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2139,7 @@ MonoBehaviour:
   damageSources:
   - EnemyKnife
   - EnemySword
-  health: 50
+  health: 30
   groundPoints:
   - {fileID: 1242543461}
   - {fileID: 2061780540}
@@ -2137,6 +2150,7 @@ MonoBehaviour:
     m_Bits: 256
   jumpForce: 400
   airControl: 1
+  startPos: {x: -11.221, y: 12, z: 0}
   immortalDuration: 3
 --- !u!61 &1833748450
 BoxCollider2D:
@@ -2277,6 +2291,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2058870403}
   - 68: {fileID: 2058870404}
+  - 114: {fileID: 2058870405}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: EnemySword
@@ -2322,6 +2337,18 @@ EdgeCollider2D:
   - {x: -0.42040062, y: -2.1125183}
   - {x: -0.82162905, y: -2.0957432}
   - {x: -0.8024769, y: 1.8400059}
+--- !u!114 &2058870405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058870402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad10e54af054c4c8cb9a59e9ed38e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
 --- !u!1 &2061780539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2394,7 @@ GameObject:
   - 114: {fileID: 2120042056}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
