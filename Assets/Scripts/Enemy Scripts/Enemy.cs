@@ -13,6 +13,9 @@ public class Enemy : Character {
 
     private bool dumb;
 
+    [SerializeField]
+    private Vector3 startPos;
+
     public bool InMeleeRange {
         get {
             if (Target != null) {
@@ -121,6 +124,10 @@ public class Enemy : Character {
     }
 
     public override void Death() {
-        Destroy(gameObject);
+        mAnimator.ResetTrigger("death");
+        mAnimator.SetTrigger("idle");
+        
+        health = 30;
+        transform.position = startPos;
     }
 }

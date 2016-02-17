@@ -154,6 +154,9 @@ public class Player : Character {
         }
     }
 
+    public void KnifeAnimation(int value) {
+        ThrowKnife(value);
+    }
     public override void ThrowKnife(int value) {
         if (!OnGround && value == 1 || OnGround && value == 0) {
             base.ThrowKnife(value);

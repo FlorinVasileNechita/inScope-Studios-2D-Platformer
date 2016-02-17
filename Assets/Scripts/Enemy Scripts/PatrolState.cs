@@ -28,6 +28,9 @@ public class PatrolState : IEnemyState {
         if (other.tag == "Edge") {
             enemy.ChangeDirection();
         }
+        if (other.tag == "Knife") {
+            enemy.Target = Player.Instance.gameObject;
+        }
     }
 
     public void Patrol() {
