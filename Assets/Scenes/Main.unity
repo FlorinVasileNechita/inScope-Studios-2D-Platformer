@@ -428,7 +428,7 @@ GameObject:
   - 4: {fileID: 198666958}
   - 61: {fileID: 198666957}
   m_Layer: 0
-  m_Name: Edge
+  m_Name: LeftEdge
   m_TagString: Edge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,11 +455,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 198666956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.99, y: 9.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.264999, y: 0.51499987, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1806282365}
+  m_RootOrder: 14
 --- !u!1001 &329044278
 Prefab:
   m_ObjectHideFlags: 0
@@ -889,7 +889,7 @@ GameObject:
   - 4: {fileID: 501498906}
   - 61: {fileID: 501498905}
   m_Layer: 0
-  m_Name: Edge
+  m_Name: RightEdge
   m_TagString: Edge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,11 +916,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 501498904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.91, y: 9.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.185, y: 0.51499987, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1806282365}
+  m_RootOrder: 13
 --- !u!1 &537137479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,6 +2084,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!4 &1806282365 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 450632, guid: fcf028565885c0449a73176d8e614796, type: 2}
+  m_PrefabInternal: {fileID: 839949454}
 --- !u!1 &1833748444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,6 +2581,8 @@ MonoBehaviour:
   health: 30
   meleeRange: 2
   throwRange: 12
+  leftEdge: {fileID: 198666958}
+  rightEdge: {fileID: 501498906}
   startPos: {x: -6.841, y: 12.26, z: 0}
 --- !u!114 &2120042054
 MonoBehaviour:

@@ -11,6 +11,11 @@ public class Enemy : Character {
     [SerializeField]
     private float throwRange;
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
+
     private bool dumb;
 
     [SerializeField]
@@ -76,10 +81,14 @@ public class Enemy : Character {
 
     public void Move() {
         if (!Attack) {
-            mAnimator.SetFloat("speed", 1);
-            transform.Translate(GetDirection() * movementSpeed * Time.deltaTime);
+            if (GetDirection().x > 0 && transform.position.x < rightEdge.position.x || GetDirection().x < 0 && transform.position.x > leftEdge.position.x) {
+                mAnimator.SetFloat("speed", 1);
+                transform.Translate(GetDirection() * movementSpeed * Time.deltaTime);
+            }
+            else if (currentState is PatrolState) {
+                ChangeDirection();
+            }
         }
-
     }
 
     private void LookAtTarget() {
