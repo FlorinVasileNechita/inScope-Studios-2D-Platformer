@@ -11,6 +11,8 @@ public class Enemy : Character {
     [SerializeField]
     private float throwRange;
 
+    private bool dumb;
+
     public bool InMeleeRange {
         get {
             if (Target != null) {
@@ -34,6 +36,7 @@ public class Enemy : Character {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
+        ChangeDirection();
         
         ChangeState(new IdleState());
 	}
@@ -46,6 +49,17 @@ public class Enemy : Character {
             }
             LookAtTarget();
         }
+
+        //////////////////////////////
+        // DUMBEST SHIT EVER UNITY PLS
+        //////////////////////////////
+        if (dumb) {
+            transform.Translate(new Vector3(0.0001f, 0, 0));
+        }
+        else {
+            transform.Translate(new Vector3(-0.0001f, 0, 0));
+        }
+        dumb = !dumb;
 	}
 
     public void ChangeState(IEnemyState newState) {
@@ -82,6 +96,7 @@ public class Enemy : Character {
         base.OnTriggerEnter2D(other);
         currentState.OnTriggerEnter(other);
     }
+
 
     public override IEnumerator TakeDamage() {
         health -= 10;

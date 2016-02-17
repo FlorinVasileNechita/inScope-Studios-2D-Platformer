@@ -1036,6 +1036,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 643008946}
   - 68: {fileID: 643008945}
+  - 114: {fileID: 643008947}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: Sword
@@ -1081,6 +1082,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833748447}
   m_RootOrder: 4
+--- !u!114 &643008947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 643008944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6983e5e14dd11b14689448427eb5b2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dumb: 1
 --- !u!1 &801714885
 GameObject:
   m_ObjectHideFlags: 0

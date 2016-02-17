@@ -29,7 +29,7 @@ public class IdleState : IEnemyState {
 
     private void Idle() {
         enemy.mAnimator.SetFloat("speed", 0);
-
+        
         idleTimer += Time.deltaTime;
 
         if (idleTimer > idleDuration) {

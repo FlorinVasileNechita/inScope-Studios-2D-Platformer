@@ -6,7 +6,7 @@ public abstract class Character : MonoBehaviour {
 
     [SerializeField]
     protected float movementSpeed;
-   
+
     [SerializeField]
     protected GameObject knifePrefab;
     [SerializeField]
@@ -26,13 +26,13 @@ public abstract class Character : MonoBehaviour {
     protected int health;
     public abstract bool IsDead { get; }
     public bool TakingDamage { get; set; }
-   
-	// Use this for initialization
-	public virtual void Start () {
+
+    // Use this for initialization
+    public virtual void Start() {
         mAnimator = GetComponent<Animator>();
-        
+
         facingRight = true;
-	}
+    }
 
     public abstract IEnumerator TakeDamage();
 
