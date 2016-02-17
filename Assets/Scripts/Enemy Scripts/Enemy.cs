@@ -37,7 +37,7 @@ public class Enemy : Character {
 	public override void Start () {
         base.Start();
         ChangeDirection();
-        
+        Player.Instance.Dead += new DeadEventHandler(RemoveTarget);
         ChangeState(new IdleState());
 	}
 	
@@ -86,6 +86,11 @@ public class Enemy : Character {
                 ChangeDirection();
             }
         }
+    }
+
+    public void RemoveTarget() {
+        Target = null;
+        ChangeState(new PatrolState());
     }
 
     public Vector2 GetDirection() {

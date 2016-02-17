@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void DeadEventHandler();
+
 public class Player : Character {
     private static Player instance;
+    public event DeadEventHandler Dead;
 
     public static Player Instance {
         get {
@@ -27,13 +30,19 @@ public class Player : Character {
     private bool airControl;
 
     public Rigidbody2D MyRigidbody { get; set; }
+    private SpriteRenderer mSpriteRenderer { get; set; }
     public bool Slide { get; set; }
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
+    private bool immortal = false;
+    [SerializeField]
+    private float immortalDuration;
+
 	public override void Start () {
         base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
         
 	}
 
@@ -59,7 +68,13 @@ public class Player : Character {
 
             HandleLayers();
         }
-	}    
+	}
+
+    public void OnDead() {
+        if (Dead != null) {
+            Dead();
+        }
+    }
 
     private void HandleMovement(float hInput) {
         // If we aren't moving up or down, we're on the ground.
@@ -141,20 +156,39 @@ public class Player : Character {
     }
 
     public override IEnumerator TakeDamage() {
-        health -= 10;
+        if (!immortal) {
+            health -= 10;
 
-        if (!IsDead) {
-            mAnimator.SetTrigger("damage");
+            if (!IsDead) {
+                mAnimator.SetTrigger("damage");
+                immortal = true;
+                StartCoroutine(IndicateImmortal());
+                yield return new WaitForSeconds(immortalDuration);
+
+                immortal = false;
+
+            }
+            else {
+                mAnimator.SetLayerWeight(1, 0);
+                mAnimator.SetTrigger("death");
+            }
         }
-        else {
-            mAnimator.SetLayerWeight(1, 0);
-            mAnimator.SetTrigger("death");
+    }
+
+    private IEnumerator IndicateImmortal() {
+        while (immortal) {
+            mSpriteRenderer.enabled = false;
+            yield return new WaitForSeconds(.1f);
+            mSpriteRenderer.enabled = true;
+            yield return new WaitForSeconds(.1f);
         }
-        yield return null;
     }
 
     public override bool IsDead {
         get {
+            if (health <= 0) {
+                OnDead();
+            }
             return health <= 0;
         }
     }
