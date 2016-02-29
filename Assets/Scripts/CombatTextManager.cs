@@ -15,16 +15,17 @@ public class CombatTextManager : MonoBehaviour {
 
     public float speed;
     public Vector3 direction;
+    public float fadeTime;
 
     public RectTransform canvas;
     public GameObject textPrefab;
 
-    public void CreateText(Vector3 position, string text, Color color) {
+    public void CreateText(Vector3 position, string text, Color color, bool critical) {
         GameObject sct = (GameObject)Instantiate(textPrefab, position, Quaternion.identity);
 
         sct.transform.SetParent(canvas);
         sct.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        sct.GetComponent<CombatText>().Initialize(speed, direction);
+        sct.GetComponent<CombatText>().Initialize(speed, direction, fadeTime, critical);
         sct.GetComponent<Text>().text = text;
         sct.GetComponent<Text>().color = color;
     }
