@@ -45,7 +45,7 @@ public class Player : Character {
 	public override void Start () {
         base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
-        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        mSpriteRenderer = GetComponent<SpriteRenderer>();       
         
 	}
 
@@ -59,7 +59,7 @@ public class Player : Character {
 
         // Easeier pausing
         if (Input.GetKeyDown(KeyCode.Q)) {
-            Debug.Break();
+            CombatTextManager.Instance.CreateText(transform.position);
         }
     }
 
