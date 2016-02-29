@@ -59,7 +59,7 @@ public class Player : Character {
 
         // Easeier pausing
         if (Input.GetKeyDown(KeyCode.Q)) {
-            CombatTextManager.Instance.CreateText(transform.position);
+            CombatTextManager.Instance.CreateText(transform.position, "test", Color.green);
         }
     }
 

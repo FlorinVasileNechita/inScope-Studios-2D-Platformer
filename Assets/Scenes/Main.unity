@@ -1312,6 +1312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1aae238cf5dd514ba4ad760c3f33f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
+  direction: {x: 0, y: 1, z: 0}
   canvas: {fileID: 2065783097}
   textPrefab: {fileID: 113814, guid: d9c6ff51660ce1e4eb684940325002d5, type: 2}
 --- !u!4 &760365257
