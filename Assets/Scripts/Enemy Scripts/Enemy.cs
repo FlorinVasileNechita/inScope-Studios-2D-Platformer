@@ -116,7 +116,16 @@ public class Enemy : Character {
 
 
     public override IEnumerator TakeDamage() {
-        health -= 10;
+        if (Random.Range(0, 10) == 0) {
+            health -= 20;
+            CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
+        }
+        else {
+            health -= 10;
+            CombatTextManager.Instance.CreateText(transform.position, "10", Color.red, false);
+        } 
+
+    
         if (!IsDead) {
             mAnimator.SetTrigger("damage");
         }

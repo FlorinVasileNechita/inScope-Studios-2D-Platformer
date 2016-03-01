@@ -116,9 +116,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92.274704, y: -145.45685}
+  m_AnchoredPosition: {x: -92.274704, y: -154.45685}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: -0.5}
+  m_Pivot: {x: 0.5, y: -0.8}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -132,11 +132,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.y
-      value: -145.45685
+      value: -154.45685
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Pivot.y
-      value: -0.5
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_EffectDistance.x

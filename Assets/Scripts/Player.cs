@@ -57,7 +57,7 @@ public class Player : Character {
             HandleInput();
         }
 
-        // Easeier pausing
+        // Debug
         if (Input.GetKeyDown(KeyCode.Q)) {
             CombatTextManager.Instance.CreateText(transform.position, "test", Color.green, false);
         }
@@ -169,7 +169,14 @@ public class Player : Character {
 
     public override IEnumerator TakeDamage() {
         if (!immortal) {
-            health -= 10;
+            if (Random.Range(0, 10) == 0) {
+                health -= 20;
+                CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
+            }
+            else {
+                health -= 10;
+                CombatTextManager.Instance.CreateText(transform.position, "10", Color.red, false);
+            } 
 
             if (!IsDead) {
                 mAnimator.SetTrigger("damage");

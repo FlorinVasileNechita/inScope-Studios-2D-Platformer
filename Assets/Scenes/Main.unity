@@ -3135,7 +3135,7 @@ MonoBehaviour:
   damageSources:
   - Knife
   - Sword
-  health: 30
+  health: 100
   meleeRange: 2
   throwRange: 12
   leftEdge: {fileID: 198666958}

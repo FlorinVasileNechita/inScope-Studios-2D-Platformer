@@ -13,6 +13,8 @@ public class CombatTextManager : MonoBehaviour {
         }
     }
 
+    public GameObject player;
+
     public float speed;
     public Vector3 direction;
     public float fadeTime;
