@@ -21,7 +21,7 @@ public class CombatText : MonoBehaviour {
             transform.Translate(direction * translation);
         }
 
-        transform.LookAt(2 * transform.position - CombatTextManager.Instance.player.transform.position);
+        //transform.LookAt(2 * transform.position - CombatTextManager.Instance.player.transform.position);
 
     }
 

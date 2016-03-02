@@ -56,14 +56,6 @@ public class Player : Character {
             }
             HandleInput();
         }
-
-        // Debug
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            CombatTextManager.Instance.CreateText(transform.position, "test", Color.green, false);
-        }
-        if (Input.GetKeyDown(KeyCode.E)) {
-            CombatTextManager.Instance.CreateText(transform.position, "test", Color.green, true);
-        }
     }
 
 	void FixedUpdate () {
@@ -168,7 +160,7 @@ public class Player : Character {
     }
 
     public override IEnumerator TakeDamage() {
-        if (!immortal) {
+        if (!immortal && !IsDead) {
             if (Random.Range(0, 10) == 0) {
                 health -= 20;
                 CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
