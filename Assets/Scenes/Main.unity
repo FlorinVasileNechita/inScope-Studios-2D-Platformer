@@ -273,7 +273,6 @@ GameObject:
   - 222: {fileID: 110289811}
   - 114: {fileID: 110289810}
   - 114: {fileID: 110289809}
-  - 114: {fileID: 110289808}
   m_Layer: 5
   m_Name: HealthValueText
   m_TagString: Untagged
@@ -291,27 +290,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2045942077}
-  m_RootOrder: 1
+  m_Father: {fileID: 1368915889}
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35.98, y: -3.58}
-  m_SizeDelta: {x: 36.57, y: 8.96}
+  m_AnchoredPosition: {x: 37.84, y: -11.54}
+  m_SizeDelta: {x: 48.81, y: 11.96}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &110289808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110289806}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!114 &110289809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,6 +2030,7 @@ RectTransform:
   m_Children:
   - {fileID: 2045942077}
   - {fileID: 2092908652}
+  - {fileID: 110289807}
   m_Father: {fileID: 2065783097}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
@@ -2098,6 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 116157575}
   valueText: {fileID: 110289810}
+  lerpSpeed: 10
 --- !u!1 &1464861771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,7 +3030,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 116157574}
-  - {fileID: 110289807}
   m_Father: {fileID: 1368915889}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}

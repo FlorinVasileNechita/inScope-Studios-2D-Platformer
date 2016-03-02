@@ -19,7 +19,7 @@ public class Stat {
     public float CurrentValue {
         get { return currentValue; }
         set {
-            currentValue = value;
+            currentValue = Mathf.Clamp(value, 0, MaxValue);
             bar.Value = currentValue;
         }
     }
