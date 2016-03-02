@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class BarScript : MonoBehaviour {
 
-    [SerializeField] private float fillAmount;
+    private float fillAmount;
     [SerializeField] private Image content;
+    [SerializeField] private Text valueText;
 
     public float MaxValue { get; set; }
     public float Value {
         set {
+            // Splitting the default string this way lets you apply this anywhere
+            string[] tmp = valueText.text.Split(':');
+            valueText.text = tmp[0] + ": " + value;
             fillAmount = Map(value, 0, MaxValue, 0, 1);
         }
 
