@@ -2764,7 +2764,7 @@ MonoBehaviour:
   damageSources:
   - EnemyKnife
   - EnemySword
-  health: 30
+  health: 100
   groundPoints:
   - {fileID: 1242543461}
   - {fileID: 2061780540}
@@ -2777,6 +2777,10 @@ MonoBehaviour:
   airControl: 1
   startPos: {x: -11.221, y: 12, z: 0}
   immortalDuration: 3
+  playerHealth:
+    bar: {fileID: 1368915892}
+    maxValue: 100
+    currentValue: 100
 --- !u!61 &1833748450
 BoxCollider2D:
   m_ObjectHideFlags: 0

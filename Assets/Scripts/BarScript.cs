@@ -7,6 +7,14 @@ public class BarScript : MonoBehaviour {
     [SerializeField] private float fillAmount;
     [SerializeField] private Image content;
 
+    public float MaxValue { get; set; }
+    public float Value {
+        set {
+            fillAmount = Map(value, 0, MaxValue, 0, 1);
+        }
+
+    }
+
 	void Start () {
 	
 	}
@@ -16,7 +24,7 @@ public class BarScript : MonoBehaviour {
 	}
 
     private void UpdateBar() {
-        content.fillAmount = Map(53, 0, 100, 0, 1);
+        content.fillAmount = fillAmount;
     }
 
     private float Map(float value, float inMin, float inMax, float outMin, float outMax) {

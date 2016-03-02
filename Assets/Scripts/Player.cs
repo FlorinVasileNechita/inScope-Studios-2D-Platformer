@@ -4,30 +4,26 @@ using System.Collections;
 public delegate void DeadEventHandler();
 
 public class Player : Character {
-    private static Player instance;
-    public event DeadEventHandler Dead;
 
+    private static Player instance;
     public static Player Instance {
         get {
             if (instance == null) {
                 instance = GameObject.FindObjectOfType<Player>();
             }
-            return instance; 
+            return instance;
         }
     }
     
-    [SerializeField]
-    private Transform[] groundPoints;
-    [SerializeField]
-    private float groundRadius;
+    public event DeadEventHandler Dead;
 
-    [SerializeField]
-    private LayerMask whatIsGround;
-    [SerializeField]
-    private float jumpForce;
+    [SerializeField] private Transform[] groundPoints;
+    [SerializeField] private float groundRadius;
 
-    [SerializeField]
-    private bool airControl;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private float jumpForce;
+
+    [SerializeField] private bool airControl;
 
     public Rigidbody2D MyRigidbody { get; set; }
     private SpriteRenderer mSpriteRenderer { get; set; }
@@ -35,18 +31,21 @@ public class Player : Character {
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
-    [SerializeField]
-    private Vector3 startPos;
+    [SerializeField] private Vector3 startPos;
 
     private bool immortal = false;
-    [SerializeField]
-    private float immortalDuration;
+    [SerializeField] private float immortalDuration;
+
+    [SerializeField] private Stat playerHealth;
+
+    private void Awake() {
+        playerHealth.Initialize();
+    }
 
 	public override void Start () {
         base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
-        mSpriteRenderer = GetComponent<SpriteRenderer>();       
-        
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     void Update() {
@@ -162,11 +161,11 @@ public class Player : Character {
     public override IEnumerator TakeDamage() {
         if (!immortal && !IsDead) {
             if (Random.Range(0, 10) == 0) {
-                health -= 20;
+                playerHealth.CurrentValue -= 20;
                 CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
             }
             else {
-                health -= 10;
+                playerHealth.CurrentValue -= 10;
                 CombatTextManager.Instance.CreateText(transform.position, "10", Color.red, false);
             } 
 
@@ -197,17 +196,17 @@ public class Player : Character {
 
     public override bool IsDead {
         get {
-            if (health <= 0) {
+            if (playerHealth.CurrentValue <= 0) {
                 OnDead();
             }
-            return health <= 0;
+            return playerHealth.CurrentValue <= 0;
         }
     }
 
     public override void Death() {
         MyRigidbody.velocity = Vector2.zero;
         mAnimator.SetTrigger("idle");
-        health = 30;
+        playerHealth.CurrentValue = 100;
         transform.position = startPos;
     }
 }
