@@ -17,9 +17,14 @@ public class Enemy : Character {
     private Transform rightEdge;
 
     private bool dumb;
+    private bool immortal;
+    private float immortalDuration = 0.4f;
+    private SpriteRenderer mSpriteRenderer;
 
     [SerializeField]
     private Vector3 startPos;
+
+    public Canvas healthCanvas;
 
     public bool InMeleeRange {
         get {
@@ -47,7 +52,10 @@ public class Enemy : Character {
         ChangeDirection();
         Player.Instance.Dead += new DeadEventHandler(RemoveTarget);
         ChangeState(new IdleState());
-	}
+        immortal = false;
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -100,6 +108,16 @@ public class Enemy : Character {
         }
     }
 
+    private IEnumerator IndicateImmortal() {
+        while (immortal) {
+            mSpriteRenderer.enabled = false;
+            yield return new WaitForSeconds(.1f);
+            mSpriteRenderer.enabled = true;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+
     public void RemoveTarget() {
         Target = null;
         ChangeState(new PatrolState());
@@ -116,13 +134,17 @@ public class Enemy : Character {
 
 
     public override IEnumerator TakeDamage() {
-        if (!IsDead) {
+        if (!healthCanvas.isActiveAndEnabled) {
+            healthCanvas.enabled = true;
+        }
+        if (!immortal && !IsDead) {
             if (Random.Range(0, 10) == 0) {
-                health -= 20;
+                playerHealth.CurrentValue -= 20;
+                
                 CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
             }
             else {
-                health -= 10;
+                playerHealth.CurrentValue -= 10;
                 CombatTextManager.Instance.CreateText(transform.position, "10", Color.red, false);
             }
         }
@@ -130,6 +152,10 @@ public class Enemy : Character {
     
         if (!IsDead) {
             mAnimator.SetTrigger("damage");
+            immortal = true;
+            StartCoroutine(IndicateImmortal());
+            yield return new WaitForSeconds(immortalDuration);
+            immortal = false;
         }
         else {
             mAnimator.SetTrigger("death");
@@ -139,15 +165,25 @@ public class Enemy : Character {
 
     public override bool IsDead {
         get {
-            return health <= 0;
+            return playerHealth.CurrentValue <= 0;
         }
+    }
+
+    public override void ChangeDirection() {
+        facingRight = !facingRight;
+        Vector3 newCanvasT = healthCanvas.transform.position;
+        healthCanvas.transform.parent = null;
+        transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+        healthCanvas.transform.parent = this.transform;
+        healthCanvas.transform.position = newCanvasT;
     }
 
     public override void Death() {
         mAnimator.ResetTrigger("death");
         mAnimator.SetTrigger("idle");
-        
-        health = 30;
+
+        playerHealth.CurrentValue = playerHealth.MaxValue;
         transform.position = startPos;
+        healthCanvas.enabled = false;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public delegate void DeadEventHandler();
 
@@ -36,13 +37,11 @@ public class Player : Character {
     private bool immortal = false;
     [SerializeField] private float immortalDuration;
 
-    [SerializeField] private Stat playerHealth;
-
     private void Awake() {
-        playerHealth.Initialize();
+        
     }
 
-	public override void Start () {
+    public override void Start () {
         base.Start();
         MyRigidbody = GetComponent<Rigidbody2D>();
         mSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -160,7 +159,7 @@ public class Player : Character {
 
     public override IEnumerator TakeDamage() {
         if (!immortal && !IsDead) {
-            if (Random.Range(0, 10) == 0) {
+            if (UnityEngine.Random.Range(0, 10) == 0) {
                 playerHealth.CurrentValue -= 20;
                 CombatTextManager.Instance.CreateText(transform.position, "20", Color.red, true);
             }
