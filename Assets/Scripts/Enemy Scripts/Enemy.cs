@@ -152,6 +152,7 @@ public class Enemy : Character {
     
         if (!IsDead) {
             mAnimator.SetTrigger("damage");
+            Target = Player.Instance.gameObject;
             immortal = true;
             StartCoroutine(IndicateImmortal());
             yield return new WaitForSeconds(immortalDuration);

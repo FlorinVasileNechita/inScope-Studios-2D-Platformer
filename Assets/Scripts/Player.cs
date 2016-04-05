@@ -52,7 +52,7 @@ public class Player : Character {
             if (transform.position.y <= -14f) {
                 Death();
             }
-            HandleInput();
+            //HandleInput();
         }
     }
 
